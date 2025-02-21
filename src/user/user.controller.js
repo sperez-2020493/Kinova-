@@ -43,3 +43,26 @@ export const actualizarUsuario = async (req, res) => {
         return res.status(500).json({ success: false, message: 'Error al actualizar usuario', error: err.message });
     }
 };
+
+export const admimDefaul = async () => {
+    try {
+        const admin = await User.findOne({ role: "ADMIN_ROLE" });
+
+        if (!admin) {
+        await User.create({
+            name: "Samuel",
+            surname: "Perez",
+            username: "Sperez",
+            email: "sperez@gmail.com",
+            password: await hash("1Aa/", 10), 
+            role: "ADMIN_ROLE",
+            phone: "45127485",
+            });
+            console.log("Se creo el Admin por Default");
+        } else {
+            console.log("El admin ya existe");
+        }
+    } catch (err) {
+        console.log("Error al crear al admin", err);
+    }
+};
