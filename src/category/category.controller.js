@@ -2,7 +2,7 @@ import Category from './category.model.js';
 
 export const categoríaDefaut = async () => {
     try {
-        const category = await Category.findOne({ nameCategory: "Default Category" });
+        const category = await Category.findOne({ nameCategory: "Noticias" });
         if (!category) {
             await Category.create({
                 nameCategory: "Noticias",
@@ -48,10 +48,10 @@ export const crearCategoria = async (req, res) => {
 
   export const editarCategorias = async (req, res) => {
     try {
-      const { categoryId } = req.params; 
-      const { nameCategory, description, status } = req.body;
+      const { uid } = req.params; 
+      const { nameCategory, description } = req.body;
   
-      const category = await Category.findById(categoryId);
+      const category = await Category.findById(uid);
       if (!category) {
         return res.status(404).json({
           success: false,
@@ -61,7 +61,6 @@ export const crearCategoria = async (req, res) => {
   
       if (nameCategory) category.nameCategory = nameCategory;
       if (description) category.description = description;
-      if (typeof status !== "undefined") category.status = status;
   
       await category.save(); 
   
@@ -80,22 +79,21 @@ export const crearCategoria = async (req, res) => {
   };
 
   export const eliminarCategorias = async (req, res) => {
-    const { categoryId } = req.params;
+    const { uid } = req.params;
     try {
-      const category = await Category.findById(categoryId);
+      const category = await Category.findById(uid);
       if (!category) {
         return res.status(404).json({ 
           success: false, 
           message: "Categoría no encontrada" 
         });
       }
-        category.status = false;
-      await category.save();
-  
-      await Publication.updateMany(
-        { category: categoryId }, 
-        { $unset: { category: "" } } 
-      );
+    await category.deleteOne();
+
+    await Post.updateMany(
+      { category: uid }, 
+      { $unset: { category: "" } }
+    );
   
       return res.status(200).json({
         success: true,
@@ -106,7 +104,7 @@ export const crearCategoria = async (req, res) => {
       console.error(error.message);
       return res.status(500).json({ 
         success: false, 
-        message: "Error al desactivar la categoría y desvincularla",
+        message: "Error al desactivar la categoría y desvincularlaA",
         error: error.message
       });
     }

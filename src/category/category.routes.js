@@ -8,10 +8,10 @@ const router = Router()
 router.post("/agregarCategoria", createdCategoryValidator, deleteFileOnError,crearCategoria
 )
 
-router.put("/editarCategoria", updateCategoryValidator, deleteFileOnError,editarCategorias
+router.put("/editarCategoria/:uid", updateCategoryValidator, deleteFileOnError,editarCategorias
 )
 
-router.put("/eliminarCategoria", deleteCategoryValidator, deleteFileOnError,eliminarCategorias
+router.delete("/eliminarCategoria/:uid", deleteCategoryValidator, deleteFileOnError,eliminarCategorias
 )
 
 export default router

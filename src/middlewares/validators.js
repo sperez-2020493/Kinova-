@@ -1,7 +1,8 @@
 import { body,param } from "express-validator";
-import { emmailExist, usernameExist, userExists } from "../helpers/db-validators.js";
+import { emmailExist, usernameExist, userExists} from "../helpers/db-validators.js";
 import { validarCampos } from "./validar-campos.js";
 import { validateJWT } from "./validate-jwt.js";
+import { hasRoles } from "./validate-roles.js";
 import { handleErrors } from "./handle-errors.js";
 
 
@@ -52,6 +53,7 @@ export const updateCategoryValidator = [
     hasRoles("ADMIN_ROLE"),
     param("uid", "No es un ID válido").isMongoId(),
     body("nameCategory").notEmpty().withMessage("El nombre de la categoria es requerido"),
+    body("nameCategory").custom(usernameExist),
     body("description").notEmpty().withMessage("La descripcion de la categoria es requerida"),
     validarCampos,
 ]

@@ -21,3 +21,4 @@ export const userExists = async (uid =" ") =>{
         throw new Error("No existe el ID del usario proporcionado")
     }
 }
+
