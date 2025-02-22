@@ -85,3 +85,25 @@ export const deletePostValidator = [
     param("uid", "No es un ID válido").isMongoId(),
     validarCampos
 ]
+
+export const createdComentarioValidator = [
+    validateJWT,
+    body("text").notEmpty().withMessage("El text del comentario es requerido"),
+    hasRoles("USER_ROLE"),
+    validarCampos
+]
+
+
+export const updateComentarioValidator = [
+    validateJWT,
+    hasRoles("USER_ROLE"),
+    param("uid", "No es un ID válido").isMongoId(),
+    validarCampos
+]
+
+export const deleteComentarioValidator = [
+    validateJWT,
+    hasRoles("USER_ROLE"),
+    param("uid", "No es un ID válido").isMongoId(),
+    validarCampos
+]
