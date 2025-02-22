@@ -64,3 +64,24 @@ export const deleteCategoryValidator = [
     param("uid", "No es un ID válido").isMongoId(),
     validarCampos,
 ]
+
+export const createdPostValidator = [
+    validateJWT,
+    hasRoles("USER_ROLE"),
+    validarCampos
+]
+
+
+export const editdPostValidator = [
+    validateJWT,
+    hasRoles("USER_ROLE"),
+    param("uid", "No es un ID válido").isMongoId(),
+    validarCampos
+]
+
+export const deletePostValidator = [
+    validateJWT,
+    hasRoles("USER_ROLE"),
+    param("uid", "No es un ID válido").isMongoId(),
+    validarCampos
+]

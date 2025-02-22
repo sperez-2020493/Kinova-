@@ -7,6 +7,7 @@ import morgan from "morgan"
 import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routers.js"
 import userRoutes from "../src/user/user.routes.js"
+import postRouter from "../src/post/post.router.js"
 import categoryRoutes from "../src/category/category.routes.js"
 import apiLimiter from "../src/middlewares/validar-cant-peticiones.js"
 
@@ -23,6 +24,8 @@ const routes = (app) =>{
     app.use("/opinionSystem/v1/auth", authRoutes)
     app.use("/opinionSystem/v1/user", userRoutes)
     app.use("/opinionSystem/v1/category", categoryRoutes)
+    app.use("/opinionSystem/v1/post", postRouter)
+
 }
 
 const conectarDB = async () =>{
