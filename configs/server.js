@@ -11,6 +11,8 @@ import postRouter from "../src/post/post.router.js"
 import commentRouter from "../src/comment/comment.router.js"
 import categoryRoutes from "../src/category/category.routes.js"
 import apiLimiter from "../src/middlewares/validar-cant-peticiones.js"
+import { swaggerDocs, swaggerUi } from "./swagger.js"
+
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
@@ -27,6 +29,8 @@ const routes = (app) =>{
     app.use("/opinionSystem/v1/category", categoryRoutes)
     app.use("/opinionSystem/v1/post", postRouter)
     app.use("/opinionSystem/v1/comment", commentRouter)
+    app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs))
+
 }
 
 const conectarDB = async () =>{
