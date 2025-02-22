@@ -1,7 +1,7 @@
 import { Schema, model} from "mongoose";
 
-const postSchema = Schema({
-    tilte:{
+const postSchema = new Schema({
+    title:{
         type: String,
         required: [true, "Title of post is required"],
         maxLength: [35, "Title post cannot exceed 35 characters"]

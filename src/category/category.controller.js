@@ -1,4 +1,6 @@
 import Category from './category.model.js';
+import Post from '../post/post.model.js';
+
 
 export const categoríaDefaut = async () => {
     try {
@@ -9,12 +11,9 @@ export const categoríaDefaut = async () => {
                 description: "Todo lo que sea de caracter informativo",
                 status: true
             });
-            console.log("Categoria creada");
         } else {
-            console.log("La categoria ya existe");
         }
     } catch (err) {
-        console.log("Error al crear la categoria", err);
     }
 };
 
@@ -78,7 +77,7 @@ export const crearCategoria = async (req, res) => {
     }
   };
 
-  export const eliminarCategorias = async (req, res) => {
+  export const eliminarCategorias = async (req, res) => { 
     const { uid } = req.params;
     try {
       const category = await Category.findById(uid);
@@ -88,23 +87,32 @@ export const crearCategoria = async (req, res) => {
           message: "Categoría no encontrada" 
         });
       }
-    await category.deleteOne();
-
-    await Post.updateMany(
-      { category: uid }, 
-      { $unset: { category: "" } }
-    );
+  
+      const noticiasCategory = await Category.findOne({ nameCategory: "Noticias" });
+      if (!noticiasCategory) {
+        return res.status(404).json({
+          success: false,
+          message: "No se encontró la categoría 'Noticias'"
+        });
+      }
+  
+      await Post.updateMany(
+        { category: uid }, 
+        { $set: { category: noticiasCategory._id } }
+      );
+  
+      await category.deleteOne();
   
       return res.status(200).json({
         success: true,
-        message: "Categoría desactivada y desvinculada de publicaciones",
+        message: "Categoría eliminada y publicaciones actualizada a la ategoria por defecto'Noticias'",
         category
       });
     } catch (error) {
       console.error(error.message);
       return res.status(500).json({ 
         success: false, 
-        message: "Error al desactivar la categoría y desvincularlaA",
+        message: "Error al eliminar la categoría y actualizar las publicaciones",
         error: error.message
       });
     }
