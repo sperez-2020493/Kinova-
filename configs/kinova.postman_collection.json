@@ -1,0 +1,587 @@
+{
+	"info": {
+		"_postman_id": "0ee22bb3-f137-45ce-9c2c-7ba8bb8f9d25",
+		"name": "kinova",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41663688"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Carlos",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "Perez",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "CP",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "cp@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Aa/8",
+							"type": "text"
+						},
+						{
+							"key": "profilePicture",
+							"type": "file",
+							"src": "/C:/Users/Informatica/Downloads/images (2).jpg"
+						},
+						{
+							"key": "phone",
+							"value": "74587458",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/auth/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"cp@gmail.com\",\r\n    \"password\":\"Aa/8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loginAdmin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"sperez@gmail.com\",\r\n    \"password\":\"1Aa/\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxY2Q2MzRmMjA5YmMxZjNjOTIyYjciLCJpYXQiOjE3NDA3NTQzMDAsImV4cCI6MTc0MDc1NzkwMH0.KHSFzK7PbI-Uxy6ChY1tzL6T4zooIESH-swfPDquxqU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Diego\",\r\n    \"surname\":\"Bercian\",\r\n    \"username\":\"dbercian\",\r\n    \"email\":\"dbercian@gmail.com\",\r\n    \"phone\":\"12541254\",\r\n    \"oldPassword\":\"Aa/8\",\r\n    \"newPassword\":\"Aa/81\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/user/updateUser/67c1cd634f209bc1f3c922b7",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"user",
+						"updateUser",
+						"67c1cd634f209bc1f3c922b7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregarCategoria",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4OGE4MmRiM2E2NWEwYzg1MWRlNzAiLCJpYXQiOjE3NDAxNTYxMDYsImV4cCI6MTc0MDE1OTcwNn0.JI2aPar1Pl3pkHiMoNFTeJ0fD3AIFtSw5vjxVzjZ2c4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"nameCategory\":\"Deporte\", \r\n   \"description\":\"mucho deporte\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/category/agregarCategoria",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"category",
+						"agregarCategoria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editarCategoria",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4OGE4MmRiM2E2NWEwYzg1MWRlNzAiLCJpYXQiOjE3NDAxNTYxMDYsImV4cCI6MTc0MDE1OTcwNn0.JI2aPar1Pl3pkHiMoNFTeJ0fD3AIFtSw5vjxVzjZ2c4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"nameCategory\":\"Mate\", \r\n   \"description\":\"mucho deporte\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/category/editarCategoria/67b8ace02ffd3139501a88c8",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"category",
+						"editarCategoria",
+						"67b8ace02ffd3139501a88c8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "newPost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxY2Q2MzRmMjA5YmMxZjNjOTIyYjciLCJpYXQiOjE3NDA3NTQzMDAsImV4cCI6MTc0MDc1NzkwMH0.KHSFzK7PbI-Uxy6ChY1tzL6T4zooIESH-swfPDquxqU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Boca vs Alianza Lima\",\r\n    \"bodyPost\": \"Boca pierde en penales contra alianza Lima\",\r\n    \"author\": \"67c1cd634f209bc1f3c922b7\",\r\n    \"category\": \"67c1cf0b4f209bc1f3c922be\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/post/newPost",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"post",
+						"newPost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editPost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxY2Q2MzRmMjA5YmMxZjNjOTIyYjciLCJpYXQiOjE3NDA3NTQzMDAsImV4cCI6MTc0MDc1NzkwMH0.KHSFzK7PbI-Uxy6ChY1tzL6T4zooIESH-swfPDquxqU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Boca vs Alianza Lima\",\r\n    \"bodyPost\": \"Boca pierde en penales contra alianza Lima por culpa del portero\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/post/editPost/67c1d5774f209bc1f3c922cb",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"post",
+						"editPost",
+						"67c1d5774f209bc1f3c922cb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminarCategoria",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxY2NhN2IzMTkwYzY0Njk1ZjZiNDMiLCJpYXQiOjE3NDA3NTQ2ODAsImV4cCI6MTc0MDc1ODI4MH0.MGYFpXjOnhwGolIJSDqlH5nANfuIeweXnuHwvN23VuE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/category/eliminarCategoria/67c1cf0b4f209bc1f3c922be",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"category",
+						"eliminarCategoria",
+						"67c1cf0b4f209bc1f3c922be"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregarComentario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxY2Q2MzRmMjA5YmMxZjNjOTIyYjciLCJpYXQiOjE3NDA3NTkzNTYsImV4cCI6MTc0MDc2Mjk1Nn0.DKteBc1eXHDyhpZcrpEtupcIPfdjMoqFYM-o44RJi0w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":\"Que mal que hayan perdido\",\r\n    \"post\": \"67c1d5774f209bc1f3c922cb\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/comment/agregarComentario",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"comment",
+						"agregarComentario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editComentario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxY2Q2MzRmMjA5YmMxZjNjOTIyYjciLCJpYXQiOjE3NDA3NTkzNTYsImV4cCI6MTc0MDc2Mjk1Nn0.DKteBc1eXHDyhpZcrpEtupcIPfdjMoqFYM-o44RJi0w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":\"Que mal que hayan perdido denuevo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/comment/editComentario/67c1e1494f209bc1f3c922da",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"comment",
+						"editComentario",
+						"67c1e1494f209bc1f3c922da"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteComentario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxY2Q2MzRmMjA5YmMxZjNjOTIyYjciLCJpYXQiOjE3NDA3NTkzNTYsImV4cCI6MTc0MDc2Mjk1Nn0.DKteBc1eXHDyhpZcrpEtupcIPfdjMoqFYM-o44RJi0w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/comment/deleteComentario/67c1e1494f209bc1f3c922da",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"comment",
+						"deleteComentario",
+						"67c1e1494f209bc1f3c922da"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MxY2Q2MzRmMjA5YmMxZjNjOTIyYjciLCJpYXQiOjE3NDA3NTkzNTYsImV4cCI6MTc0MDc2Mjk1Nn0.DKteBc1eXHDyhpZcrpEtupcIPfdjMoqFYM-o44RJi0w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3001/opinionSystem/v1/post/deletePost/67c1d5774f209bc1f3c922cb",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"opinionSystem",
+						"v1",
+						"post",
+						"deletePost",
+						"67c1d5774f209bc1f3c922cb"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
